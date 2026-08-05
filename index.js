@@ -551,7 +551,8 @@ async function run() {
               
               body { display: flex; justify-content: center; align-items: flex-start; margin: 0;  font-family: 'ArialEmbedded', sans-serif; -webkit-print-color-adjust: exact; }
 
-              .page-container { background-color: #fff; padding: 1rem 0rem; width: 760px; position: relative; box-sizing: border-box; margin-bottom: -40px; }
+              // .page-container { background-color: #fff; padding: 1rem 0rem; width: 760px; position: relative; box-sizing: border-box; margin-bottom: -40px; }
+              .page-container { background-color: #fff; padding: 1rem 0rem; width: 780px; position: relative; box-sizing: border-box; margin-bottom: -40px; }
 
               .right-content-wrapper { margin-left: 415px; }
 
