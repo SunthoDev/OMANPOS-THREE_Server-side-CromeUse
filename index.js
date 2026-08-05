@@ -612,7 +612,7 @@ async function run() {
               .att { font-family: 'RobotoCondensedMedium', serif; font-weight: bold; }
 
               // .qr{ font-family: 'TimesEmbedded', serif; position: absolute; left: -45px; font-size:0.6rem; }
-              .qr{ font-family: 'BoldTimesNewRoman', serif; position: absolute; left: -52px; font-size:0.7rem; }
+              .qr{ font-family: 'BoldTimesNewRoman', serif; position: absolute; left: -54px; font-size:0.7rem; }
 
               </style>
           </head>
