@@ -552,9 +552,8 @@ async function run() {
               body { display: flex; justify-content: center; align-items: flex-start; margin: 0;  font-family: 'ArialEmbedded', sans-serif; -webkit-print-color-adjust: exact; }
 
               .page-container { background-color: #fff; padding: 1rem 0rem; width: 760px; position: relative; box-sizing: border-box; margin-bottom: -40px; }
-
-              // .right-content-wrapper { margin-left: 415px; }
-              .right-content-wrapper { margin-left: 429px; }
+              .right-content-wrapper { margin-left: 415px; }
+              // .right-content-wrapper { margin-left: 408px; }
 
               .seal-container { rotate: 1deg; position: absolute; top: 65px; left: 373px; width: 6.5rem; height: auto; z-index: 10; }
               .seal-image { width: 80%; height: auto; border-radius: 9999px; }
