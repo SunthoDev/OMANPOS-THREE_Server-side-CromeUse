@@ -482,6 +482,10 @@ async function run() {
           path.join(__dirname, "assets", "Calibribold.woff"),
           "base64"
         );
+        const TimesNewRomanBolds = await fs.readFile(
+          path.join(__dirname, "assets", "TimesNewRomanBold.woff"),
+          "base64"
+        );
         // ================= New Import =================
 
         const ArbeLogoataUrl = `data:image/jpeg;base64,${ARabLogoBase64}`;
@@ -534,6 +538,12 @@ async function run() {
               @font-face {
                 font-family: 'Calibribold';
                 src: url("data:font/truetype;base64,${CalibriboldFontBase64}") format("truetype");
+                font-weight: normal;
+                font-style: normal;
+              }
+              @font-face {
+                font-family: 'BoldTimesNewRoman';
+                src: url("data:font/truetype;base64,${TimesNewRomanBolds}") format("truetype");
                 font-weight: normal;
                 font-style: normal;
               }
@@ -590,7 +600,8 @@ async function run() {
 
               .footer-line { margin: 0.2rem 0; }
 
-              .footer-mono { font-family: 'TimesEmbedded', serif; letter-spacing: 0.07em; font-size: 0.7rem; font-weight: 600; }
+              // .footer-mono { font-family: 'TimesEmbedded', serif; letter-spacing: 0.07em; font-size: 0.7rem; font-weight: 600; }
+              .footer-mono { font-family: 'BoldTimesNewRoman', serif; letter-spacing: 0.07em; font-size: 0.7rem; font-weight: 600; }
               
               .qr-code-image { position: absolute; bottom: 15px; right: 240px; width: 4.5rem; height: 4.5rem; opacity: 0.8; }
               .blockchain-verified { position: absolute; bottom: 40px; left: 20px; }
@@ -599,7 +610,9 @@ async function run() {
               .com { font-family: 'RobotoCondensedMedium', serif; font-weight: bold; }
               .att { font-family: 'RobotoCondensedMedium', serif; font-weight: bold; }
 
-              .qr{ font-family: 'TimesEmbedded', serif; position: absolute; left: -45px; font-size:0.6rem; }
+              // .qr{ font-family: 'TimesEmbedded', serif; position: absolute; left: -45px; font-size:0.6rem; }
+              .qr{ font-family: 'BoldTimesNewRoman', serif; position: absolute; left: -45px; font-size:0.6rem; }
+
               </style>
           </head>
           <body>
@@ -625,7 +638,7 @@ async function run() {
                                   <div class="data-value">${documentData.VerifyAt}</div>
 
                                   <div class="data-label-en">Applicant <br> Name</div>
-                                  <div class="data-value">${documentData.ApplicantName}</div>
+                                  <div class="data-value">${documentData.ApplicantPDFName}</div>
 
                                   <div class="data-label-en">Document <br> Name</div>
                                   <div class="data-value com-m">${documentData.DocumentType}</div>
