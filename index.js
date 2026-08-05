@@ -554,7 +554,7 @@ async function run() {
               .page-container { background-color: #fff; padding: 1rem 0rem; width: 760px; position: relative; box-sizing: border-box; margin-bottom: -40px; }
 
               // .right-content-wrapper { margin-left: 415px; }
-              .right-content-wrapper { margin-left: 428px; }
+              .right-content-wrapper { margin-left: 429px; }
 
               .seal-container { rotate: 1deg; position: absolute; top: 65px; left: 373px; width: 6.5rem; height: auto; z-index: 10; }
               .seal-image { width: 80%; height: auto; border-radius: 9999px; }
