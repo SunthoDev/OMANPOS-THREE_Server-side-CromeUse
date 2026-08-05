@@ -557,7 +557,7 @@ async function run() {
               .seal-container { rotate: 1deg; position: absolute; top: 65px; left: 373px; width: 6.5rem; height: auto; z-index: 10; }
               .seal-image { width: 80%; height: auto; border-radius: 9999px; }
               // .certificate-box { border: 1px solid #9ca3af; width: 315px; position: relative; height: 175px; }
-              .certificate-box { border: 1px solid #9ca3af; width: 328px; position: relative; height: 175px; }
+              .certificate-box { border: 1px solid #9ca3af; width: 326px; position: relative; height: 175px; }
 
               .certificate-main { 
                 width: 300px; 
@@ -577,14 +577,17 @@ async function run() {
                 align-items: flex-start;
                 background-color: green,
                 padding-left: 25px;
-                margin-left: -16px;
+                // margin-left: -16px;
+                margin-left: -19px;
               }
               .arbImage img {
                   width: 72px;
                   height: auto;
               }
 
-              .header-image-container { position: absolute; top: -0.8rem; left: 48%; transform: translateX(-50%); width: 244px; z-index: 10; }
+              // .header-image-container { position: absolute; top: -0.8rem; left: 48%; transform: translateX(-50%); width: 244px; z-index: 10; }
+              .header-image-container { position: absolute; top: -0.8rem; left: 48%; transform: translateX(-50%); width: 248px; z-index: 10; }
+
               .header-image { width: 100%;}
 
               // .data-label-en, .data-value, .data-label-ar { line-height: 1.1; font-size: 10px; }
