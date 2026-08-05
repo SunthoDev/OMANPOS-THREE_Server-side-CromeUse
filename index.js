@@ -553,7 +553,6 @@ async function run() {
 
               .page-container { background-color: #fff; padding: 1rem 0rem; width: 760px; position: relative; box-sizing: border-box; margin-bottom: -40px; }
               .right-content-wrapper { margin-left: 415px; }
-              // .right-content-wrapper { margin-left: 408px; }
 
               .seal-container { rotate: 1deg; position: absolute; top: 65px; left: 373px; width: 6.5rem; height: auto; z-index: 10; }
               .seal-image { width: 80%; height: auto; border-radius: 9999px; }
@@ -563,7 +562,7 @@ async function run() {
               .certificate-main { 
                 width: 300px; 
                 display: grid; 
-                margin-left: 1.5rem; 
+                margin-left: 2.5rem; 
                 grid-template-columns: 1fr 1fr 1fr; 
                 padding: 12px 0rem 1rem 0.1rem; 
                 font-size: 0.5rem; 
