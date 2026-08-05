@@ -602,7 +602,7 @@ async function run() {
               .footer-line { margin: 0.2rem 0; }
 
               // .footer-mono { font-family: 'TimesEmbedded', serif; letter-spacing: 0.07em; font-size: 0.7rem; font-weight: 600; }
-              .footer-mono { font-family: 'BoldTimesNewRoman', serif; letter-spacing: 0.04em; font-size: 0.7rem; font-weight: 600; }
+              .footer-mono { font-family: 'BoldTimesNewRoman', serif; letter-spacing: 0.03em; font-size: 0.7rem; font-weight: 600; }
               
               .qr-code-image { position: absolute; bottom: 15px; right: 240px; width: 4.5rem; height: 4.5rem; opacity: 0.8; }
               .blockchain-verified { position: absolute; bottom: 40px; left: 20px; }
@@ -612,7 +612,7 @@ async function run() {
               .att { font-family: 'RobotoCondensedMedium', serif; font-weight: bold; }
 
               // .qr{ font-family: 'TimesEmbedded', serif; position: absolute; left: -45px; font-size:0.6rem; }
-              .qr{ font-family: 'BoldTimesNewRoman', serif; position: absolute; left: -36px; font-size:0.7rem; }
+              .qr{ font-family: 'BoldTimesNewRoman', serif; position: absolute; left: -52px; font-size:0.7rem; }
 
               </style>
           </head>
