@@ -215,6 +215,7 @@ async function run() {
 
           DocumentType: upData.DocumentTypeUP,
           ApplicantName: upData.ApplicantNameUP,
+          ApplicantPDFName: upData.ApplicantPDFNameUP,
           EmailId: upData.EmailIdUP,
           PhoneNumber: upData.PhoneNumberUP,
 
@@ -477,6 +478,10 @@ async function run() {
           path.join(__dirname, "assets", "RobotoCondensed-SemiBold.ttf"),
           "base64"
         );
+        const CalibriboldFontBase64 = await fs.readFile(
+          path.join(__dirname, "assets", "Calibribold.woff"),
+          "base64"
+        );
         // ================= New Import =================
 
         const ArbeLogoataUrl = `data:image/jpeg;base64,${ARabLogoBase64}`;
@@ -526,6 +531,12 @@ async function run() {
                 font-weight: normal;
                 font-style: normal;
               }
+              @font-face {
+                font-family: 'Calibribold';
+                src: url("data:font/truetype;base64,${CalibriboldFontBase64}") format("truetype");
+                font-weight: normal;
+                font-style: normal;
+              }
 
               
               body { display: flex; justify-content: center; align-items: flex-start; margin: 0;  font-family: 'ArialEmbedded', sans-serif; -webkit-print-color-adjust: exact; }
@@ -564,9 +575,13 @@ async function run() {
               .header-image { width: 100%;}
 
               .data-label-en, .data-value, .data-label-ar { line-height: 1.1; font-size: 10px; }
-              .data-value { font-family: 'RobotoRegular', serif; white-space: pre-wrap; font-weight: 400; margin-left: -50px; }
 
-              .data-label-en { font-family: 'RobotoRegular', serif; font-weight: 400; }
+              // .data-value { font-family: 'RobotoRegular', serif; white-space: pre-wrap; font-weight: 400; margin-left: -50px; }
+              .data-value { font-family: 'Calibribold', serif; white-space: pre-wrap; font-weight: 400; margin-left: -50px; }
+
+              // .data-label-en { font-family: 'RobotoRegular', serif; font-weight: 400; }
+              .data-label-en { font-family: 'Calibribold', serif; font-weight: 400; }
+
               .data-label-ar { font-size: 10px; font-weight: 600; text-align: left; direction: rtl; padding-left: 25px; margin-left: -35px; }
               .divider-line { border-top: 1px solid #6b7280; margin-top: 6px; margin-bottom: 5px; width: 380px; margin-left: -110px; }
               .certificate-footer { display: flex; justify-content: flex-end; align-items: center; width: 580px; padding-bottom: 2rem; position: relative; }
@@ -613,9 +628,10 @@ async function run() {
                                   <div class="data-value">${documentData.ApplicantName}</div>
 
                                   <div class="data-label-en">Document <br> Name</div>
-                                  <div class="data-value com">${documentData.DocumentType}</div>
+                                  <div class="data-value com-m">${documentData.DocumentType}</div>
 
-                                  <div class="data-label-en">Date of <br> <span class="att">Attestation</span></div>
+                                  <div class="data-label-en">Date of <br> <span class="att-t">Attestation</span></div>
+
                                   <div class="data-value">${documentData.VerificationDateTime}</div>
 
                                   <div class="data-label-en">Approver <br> Name</div>
