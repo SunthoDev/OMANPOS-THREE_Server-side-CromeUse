@@ -601,7 +601,7 @@ async function run() {
               .footer-line { margin: 0.2rem 0; }
 
               // .footer-mono { font-family: 'TimesEmbedded', serif; letter-spacing: 0.07em; font-size: 0.7rem; font-weight: 600; }
-              .footer-mono { font-family: 'BoldTimesNewRoman', serif; letter-spacing: 0.07em; font-size: 0.7rem; font-weight: 600; }
+              .footer-mono { font-family: 'BoldTimesNewRoman', serif; letter-spacing: 0.05em; font-size: 0.7rem; font-weight: 600; }
               
               .qr-code-image { position: absolute; bottom: 15px; right: 240px; width: 4.5rem; height: 4.5rem; opacity: 0.8; }
               .blockchain-verified { position: absolute; bottom: 40px; left: 20px; }
@@ -611,7 +611,7 @@ async function run() {
               .att { font-family: 'RobotoCondensedMedium', serif; font-weight: bold; }
 
               // .qr{ font-family: 'TimesEmbedded', serif; position: absolute; left: -45px; font-size:0.6rem; }
-              .qr{ font-family: 'BoldTimesNewRoman', serif; position: absolute; left: -45px; font-size:0.6rem; }
+              .qr{ font-family: 'BoldTimesNewRoman', serif; position: absolute; left: -45px; font-size:0.7rem; }
 
               </style>
           </head>
@@ -625,30 +625,30 @@ async function run() {
 
                               <main class="certificate-main">
                                   <div class="data-label-en">e-Verify No</div>
-                                  <div class="data-value">${documentData.TransactionNumber}</div>
+                                  <div class="data-value">${documentData?.TransactionNumber}</div>
                                   
                                   <div class="arbImage">
                                       <img src="${ArbeLogoataUrl}" alt="Arabic Image">
                                   </div>
 
                                   <div class="data-label-en">Verify By</div>
-                                  <div class="data-value">${documentData.VerifyBy}</div>
+                                  <div class="data-value">${documentData?.VerifyBy}</div>
 
                                   <div class="data-label-en">Verify at</div>
-                                  <div class="data-value">${documentData.VerifyAt}</div>
+                                  <div class="data-value">${documentData?.VerifyAt}</div>
 
                                   <div class="data-label-en">Applicant <br> Name</div>
-                                  <div class="data-value">${documentData.ApplicantPDFName}</div>
+                                  <div class="data-value">${documentData?.ApplicantPDFName}</div>
 
                                   <div class="data-label-en">Document <br> Name</div>
-                                  <div class="data-value com-m">${documentData.DocumentType}</div>
+                                  <div class="data-value com-m">${documentData?.DocumentType}</div>
 
                                   <div class="data-label-en">Date of <br> <span class="att-t">Attestation</span></div>
 
-                                  <div class="data-value">${documentData.VerificationDateTime}</div>
+                                  <div class="data-value">${documentData?.VerificationDateTime}</div>
 
                                   <div class="data-label-en">Approver <br> Name</div>
-                                  <div class="data-value">${documentData.ApproverName}</div>
+                                  <div class="data-value">${documentData?.ApproverName}</div>
                               </main>
                         
                       </div>
