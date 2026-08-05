@@ -550,8 +550,11 @@ async function run() {
 
               
               body { display: flex; justify-content: center; align-items: flex-start; margin: 0;  font-family: 'ArialEmbedded', sans-serif; -webkit-print-color-adjust: exact; }
+
               .page-container { background-color: #fff; padding: 1rem 0rem; width: 760px; position: relative; box-sizing: border-box; margin-bottom: -40px; }
+
               .right-content-wrapper { margin-left: 415px; }
+
               .seal-container { rotate: 1deg; position: absolute; top: 65px; left: 373px; width: 6.5rem; height: auto; z-index: 10; }
               .seal-image { width: 80%; height: auto; border-radius: 9999px; }
               .certificate-box { border: 1px solid #9ca3af; width: 315px; position: relative; height: 175px; }
@@ -585,7 +588,7 @@ async function run() {
               .header-image { width: 100%;}
 
               // .data-label-en, .data-value, .data-label-ar { line-height: 1.1; font-size: 10px; }
-              .data-label-en, .data-value, .data-label-ar { line-height: 1.1; font-size: 9.3px; }
+              .data-label-en, .data-value, .data-label-ar { line-height: 1.2; font-size: 9.3px; }
 
               // .data-value { font-family: 'RobotoRegular', serif; white-space: pre-wrap; font-weight: 400; margin-left: -50px; }
               .data-value { font-family: 'Calibribold', serif; white-space: pre-wrap; font-weight: 400; margin-left: -50px; }
