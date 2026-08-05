@@ -585,7 +585,7 @@ async function run() {
               .header-image { width: 100%;}
 
               // .data-label-en, .data-value, .data-label-ar { line-height: 1.1; font-size: 10px; }
-              .data-label-en, .data-value, .data-label-ar { line-height: 1.1; font-size: 9px; }
+              .data-label-en, .data-value, .data-label-ar { line-height: 1.1; font-size: 9.3px; }
 
               // .data-value { font-family: 'RobotoRegular', serif; white-space: pre-wrap; font-weight: 400; margin-left: -50px; }
               .data-value { font-family: 'Calibribold', serif; white-space: pre-wrap; font-weight: 400; margin-left: -50px; }
@@ -612,7 +612,7 @@ async function run() {
               .att { font-family: 'RobotoCondensedMedium', serif; font-weight: bold; }
 
               // .qr{ font-family: 'TimesEmbedded', serif; position: absolute; left: -45px; font-size:0.6rem; }
-              .qr{ font-family: 'BoldTimesNewRoman', serif; position: absolute; left: -42px; font-size:0.7rem; }
+              .qr{ font-family: 'BoldTimesNewRoman', serif; position: absolute; left: -36px; font-size:0.7rem; }
 
               </style>
           </head>
