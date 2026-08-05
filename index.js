@@ -579,7 +579,7 @@ async function run() {
                 // padding-left: 25px;
                 padding-left: 25px;
                 // margin-left: -16px;
-                margin-left: -24px;
+                margin-left: -25px;
               }
               .arbImage img {
                   width: 72px;
@@ -595,7 +595,7 @@ async function run() {
               .data-label-en, .data-value, .data-label-ar { line-height: 1.2; font-size: 9.3px; }
 
               // .data-value { font-family: 'RobotoRegular', serif; white-space: pre-wrap; font-weight: 400; margin-left: -50px; }
-              .data-value { font-family: 'Calibribold', serif; white-space: pre-wrap; font-weight: 400; margin-left: -46px; }
+              .data-value { font-family: 'Calibribold', serif; white-space: pre-wrap; font-weight: 400; margin-left: -45px; }
 
               // .data-label-en { font-family: 'RobotoRegular', serif; font-weight: 400; }
               .data-label-en { font-family: 'Calibribold', serif; font-weight: 400; }
