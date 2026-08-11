@@ -657,7 +657,7 @@ async function run() {
               .footer-line { margin: 0.2rem 0; }
 
               // .footer-mono { font-family: 'TimesEmbedded', serif; letter-spacing: 0.07em; font-size: 0.7rem; font-weight: 600; }
-              .footer-mono { font-family: 'BoldTimesNewRoman', serif; letter-spacing: 0.03em; font-size: 0.8rem; font-weight: 600; }
+              .footer-mono { font-family: 'BoldTimesNewRoman', serif; letter-spacing: 0.03em; font-size: 11.6px; font-weight: 600; }
               
               // .qr-code-image { position: absolute; bottom: 15px; right: 240px; width: 4.5rem; height: 4.5rem; opacity: 0.8; }
               .qr-code-image { position: absolute; bottom: 20px; right: 240px; width: 4.5rem; height: 4.5rem; opacity: 0.8; }
