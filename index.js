@@ -4,7 +4,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const path = require("path");
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 3000;
 const multer = require("multer");
 
 // --- Libraries for the new Puppeteer PDF route ---
@@ -194,6 +194,30 @@ async function run() {
       res.send(result);
     });
 
+    app.get('/UserDataGetByVNNumber/:vnNumber', async (req, res) => {
+      try {
+        const vnNumbers = req.params.vnNumber;
+        // যদি ইউজার আগেই VN লিখে পাঠায় তবে তা চেক করে VN যোগ করা
+        const formattedVN = vnNumbers.startsWith("VN") ? vnNumbers : `VN${vnNumbers}`;
+        const query = { TransactionNumber: formattedVN };
+
+        let user = await InformationOfUserCollection.findOne(query);
+
+        if (!user) {
+          return res.status(404).json({
+            success: false,
+            message: "No user found with this VN Number!"
+          });
+        }
+        res.status(200).json(user);
+      } catch (error) {
+        console.error("Backend Error:", error);
+        res.status(500).json({
+          success: false,
+          message: "Internal Server Error"
+        });
+      }
+    });
     // Admin Delete User __________________________
     app.delete("/DeleteUserInformation/:id", async (req, res) => {
       let upId = req.params.id;
@@ -240,23 +264,23 @@ async function run() {
     // ইউজার আইডি দিয়ে ডেটা খুঁজে পাওয়ার API
     // ===============================================
     app.get("/getWebsiteInfo", async (req, res) => {
-    // আমরা যে কাস্টম নাম দিয়ে সেভ করেছি তা দিয়ে খুঁজব
-    const result = await WebsiteInformationCollection.findOne({ identifier: "website-global-info" });
-    res.send(result || {}); // ডাটা না থাকলে এরর দিবে না, খালি অবজেক্ট দিবে
+      // আমরা যে কাস্টম নাম দিয়ে সেভ করেছি তা দিয়ে খুঁজব
+      const result = await WebsiteInformationCollection.findOne({ identifier: "website-global-info" });
+      res.send(result || {}); // ডাটা না থাকলে এরর দিবে না, খালি অবজেক্ট দিবে
     });
-    
+
     // ডেটা অ্যাড বা আপডেট করার API
     // ===============================================
     app.put("/AdminUpdateWebsiteInfo", async (req, res) => {
       const { name, email } = req.body;
       try {
         // আমরা আইডি হিসেবে একটি ফিক্সড নাম ব্যবহার করছি যাতে সবসময় একটি ডকুমেন্টেই কাজ হয়
-        const filter = { identifier: "website-global-info" }; 
+        const filter = { identifier: "website-global-info" };
         const options = { upsert: true }; // ডাটা না থাকলে তৈরি হবে, থাকলে আপডেট হবে
 
         const updateDoc = {
           $set: {
-            identifier: "website-global-info", 
+            identifier: "website-global-info",
             name: name,
             email: email,
           },
@@ -266,7 +290,7 @@ async function run() {
       } catch (error) {
         res.status(500).send({ message: "সার্ভার এরর", error: error.message });
       }
-    });     
+    });
 
     // ===========================================================================================================
 
@@ -440,6 +464,10 @@ async function run() {
         }
 
         // 1. Load Assets
+        const ARabBottomImageBase64 = await fs.readFile(
+          path.join(__dirname, "assets", "ARABICBottom.png"),
+          "base64"
+        );
         const ARabLogoBase64 = await fs.readFile(
           path.join(__dirname, "assets", "ARABIC.png"),
           "base64"
@@ -488,6 +516,7 @@ async function run() {
         );
         // ================= New Import =================
 
+        const ArbeImageBottomUrl = `data:image/jpeg;base64,${ARabBottomImageBase64}`;
         const ArbeLogoataUrl = `data:image/jpeg;base64,${ARabLogoBase64}`;
         const leftLogoDataUrl = `data:image/jpeg;base64,${leftLogoBase64}`;
         const headingDataUrl = `data:image/png;base64,${headingBase64}`;
@@ -552,10 +581,14 @@ async function run() {
               body { display: flex; justify-content: center; align-items: flex-start; margin: 0;  font-family: 'ArialEmbedded', sans-serif; -webkit-print-color-adjust: exact; }
 
               .page-container { background-color: #fff; padding: 1rem 0rem; width: 760px; position: relative; box-sizing: border-box; margin-bottom: -40px; }
-              .right-content-wrapper { margin-left: 415px; }
 
-              .seal-container { rotate: 1deg; position: absolute; top: 65px; left: 373px; width: 6.5rem; height: auto; z-index: 10; }
+              // .right-content-wrapper { margin-left: 415px; }
+              .right-content-wrapper { margin-left: 403px; }
+
+              // .seal-container { rotate: 1deg; position: absolute; top: 65px; left: 373px; width: 6.5rem; height: auto; z-index: 10; }
+              .seal-container { rotate: 1deg; position: absolute; top: 65px; left: 361px; width: 6.5rem; height: auto; z-index: 10; }
               .seal-image { width: 80%; height: auto; border-radius: 9999px; }
+
               // .certificate-box { border: 1px solid #9ca3af; width: 315px; position: relative; height: 175px; }
               .certificate-box { border: 1px solid #9ca3af; width: 326px; position: relative; height: 175px; }
 
@@ -578,7 +611,7 @@ async function run() {
                 background-color: green,
                 padding-left: 25px;
                 // margin-left: -16px;
-                margin-left: -23px;
+                margin-left: -8px;
               }
               .arbImage img {
                   width: 72px;
@@ -586,7 +619,7 @@ async function run() {
               }
 
               // .header-image-container { position: absolute; top: -0.8rem; left: 48%; transform: translateX(-50%); width: 244px; z-index: 10; }
-              .header-image-container { position: absolute; top: -0.8rem; left: 48%; transform: translateX(-50%); width: 248px; z-index: 10; }
+              .header-image-container { position: absolute; top: -0.8rem; left: 48%; transform: translateX(-50%); width: 250px; z-index: 10; }
 
               .header-image { width: 100%;}
 
@@ -600,17 +633,35 @@ async function run() {
               .data-label-en { font-family: 'Calibribold', serif; font-weight: 400; }
 
               .data-label-ar { font-size: 10px; font-weight: 600; text-align: left; direction: rtl; padding-left: 25px; margin-left: -35px; }
-              .divider-line { border-top: 1px solid #6b7280; margin-top: 6px; margin-bottom: 5px; width: 380px; margin-left: -110px; }
-              .certificate-footer { display: flex; justify-content: flex-end; align-items: center; width: 580px; padding-bottom: 2rem; position: relative; }
 
-              .footer-text { text-align: right; direction: rtl; font-size: 11px; margin-right: 20rem; font-weight: 600; }
+              // .divider-line { border-top: 1px solid #6b7280; margin-top: 6px; margin-bottom: 5px; width: 380px; margin-left: -110px; }
+              .divider-line { border-top: 1px solid #6b7280; margin-top: 6px; margin-bottom: 5px; width: 394px; margin-left: -106px; }
+              
+              // .certificate-footer { display: flex; justify-content: flex-end; align-items: center; width: 580px; padding-bottom: 2rem; position: relative; }
+              .certificate-footer { display: flex; justify-content: flex-end; align-items: center; width: 592px; padding-bottom: 2rem; position: relative; }
+
+              // .footer-text { text-align: right; direction: rtl; font-size: 11px; margin-right: 20rem; font-weight: 600; }
+            .footer-text { 
+                text-align: right; 
+                direction: rtl; 
+                font-size: 12px;
+                margin-right: 20rem;
+                font-weight: 600; 
+
+                /* 🛠️ Puppeteer Crash Prevention Props */
+                box-sizing: border-box;
+                margin-left: -20rem; /* মার্জিন রাইটের সমপরিমাণ নেগেটিভ মার্জিন লেফট দিয়ে লেআউটের মোট উইড্থ ব্যালেন্স করা হয়েছে */
+                width: max-content;   /* টেক্সট তার প্রয়োজন অনুযায়ী সাইজ নিবে, ভাঙবে না */
+            }
 
               .footer-line { margin: 0.2rem 0; }
 
               // .footer-mono { font-family: 'TimesEmbedded', serif; letter-spacing: 0.07em; font-size: 0.7rem; font-weight: 600; }
               .footer-mono { font-family: 'BoldTimesNewRoman', serif; letter-spacing: 0.03em; font-size: 0.7rem; font-weight: 600; }
               
-              .qr-code-image { position: absolute; bottom: 15px; right: 240px; width: 4.5rem; height: 4.5rem; opacity: 0.8; }
+              // .qr-code-image { position: absolute; bottom: 15px; right: 240px; width: 4.5rem; height: 4.5rem; opacity: 0.8; }
+              .qr-code-image { position: absolute; bottom: 20px; right: 240px; width: 4.5rem; height: 4.5rem; opacity: 0.8; }
+
               .blockchain-verified { position: absolute; bottom: 40px; left: 20px; }
               .verified-image { height: 1.3rem; width: auto; }
 
@@ -618,7 +669,7 @@ async function run() {
               .att { font-family: 'RobotoCondensedMedium', serif; font-weight: bold; }
 
               // .qr{ font-family: 'TimesEmbedded', serif; position: absolute; left: -45px; font-size:0.6rem; }
-              .qr{ font-family: 'BoldTimesNewRoman', serif; position: absolute; left: -54px; font-size:0.7rem; }
+              .qr{ font-family: 'BoldTimesNewRoman', serif; position: absolute; left: -64px; font-size:0.7rem; }
 
               </style>
           </head>
@@ -628,6 +679,7 @@ async function run() {
                    <div class="blockchain-verified"><img src="${verifiedDataUrl}" alt="Blockchain Icon" class="verified-image"></div>
                    <div class="right-content-wrapper">
                        <div class="certificate-box">
+
                            <div class="header-image-container"><img src="${headingDataUrl}" alt="Header" class="header-image"></div>
 
                               <main class="certificate-main">
