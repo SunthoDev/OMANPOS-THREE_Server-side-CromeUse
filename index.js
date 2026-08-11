@@ -523,7 +523,7 @@ async function run() {
         const verifiedDataUrl = `data:image/png;base64,${verifiedBase64}`;
 
         const qrCodeDataURL = await QRCode.toDataURL(
-          `https://omanpost.doscwallet.com/User/&/page/preview/${documentData.VerificationNo}`
+          `https://omanpost.docswallat.com/User/&/page/preview/${documentData.VerificationNo}`
         );
 
         // 2. Prepare HTML
