@@ -611,7 +611,7 @@ async function run() {
                 background-color: green,
                 padding-left: 25px;
                 // margin-left: -16px;
-                margin-left: -1px;
+                margin-left: -2px;
               }
               .arbImage img {
                   width: 72px;
