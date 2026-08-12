@@ -611,7 +611,7 @@ async function run() {
                 background-color: green,
                 padding-left: 25px;
                 // margin-left: -16px;
-                margin-left: 4px;
+                margin-left: 1px;
               }
               .arbImage img {
                   width: 72px;
@@ -669,7 +669,7 @@ async function run() {
               .att { font-family: 'RobotoCondensedMedium', serif; font-weight: bold; }
 
               // .qr{ font-family: 'TimesEmbedded', serif; position: absolute; left: -45px; font-size:0.6rem; }
-              .qr{ font-family: 'BoldTimesNewRoman', serif; position: absolute; left: -66px; font-size:11.6px; }
+              .qr{ font-family: 'BoldTimesNewRoman', serif; position: absolute; left: -68px; font-size:11.6px; }
 
               </style>
           </head>
