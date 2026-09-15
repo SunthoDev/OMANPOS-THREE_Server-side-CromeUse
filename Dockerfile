@@ -1,5 +1,26 @@
 FROM node:20-slim
 
+
+# Debian/Ubuntu বেস ইমেজে contrib রিপোজিটরি এনাবল করা (ttf-mscorefonts-installer এর জন্য প্রয়োজন)
+RUN apt-get update && apt-get install -y \
+    fontconfig \
+    cabextract \
+    xfonts-utils \
+    wget \
+    && rm -rf /var/lib/apt/lists/*
+
+# Microsoft Fonts EULA লাইসেন্স অটোমেটিক Accept করার নিয়ম
+RUN echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | debconf-set-selections
+
+# Fonts ইনস্টল এবং ক্যাশ আপডেট
+RUN apt-get update && apt-get install -y \
+    ttf-mscorefonts-installer \
+    && fc-cache -f -v \
+    && rm -rf /var/lib/apt/lists/*
+
+
+
+    
 # Install Chromium and necessary dependencies
 # 'chromium-driver' is added for completeness, and 'libappindicator3-1' is restored.
 RUN apt-get update && apt-get install -y \
