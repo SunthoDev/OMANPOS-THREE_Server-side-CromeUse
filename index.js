@@ -1289,7 +1289,7 @@ run().catch(console.dir);
 // ============================================
 
 app.get("/", (req, res) => {
-  res.send("OMANPOS Website trhird number project is running");
+  res.send("OMANPOS Website trhird number project is running...");
 });
 
 app.listen(port, () => {
