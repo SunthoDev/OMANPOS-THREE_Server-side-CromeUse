@@ -758,6 +758,7 @@ async function run() {
             "/usr/bin/chromium-browser",
             "/usr/bin/google-chrome-stable",
             "/usr/bin/google-chrome",
+            "--font-render-hinting=medium", // ফন্ট ক্লিয়ার রেন্ডার করার জন্য
           ];
           for (const p of linuxPaths) {
             if (fsClassic.existsSync(p)) {

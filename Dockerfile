@@ -1,16 +1,32 @@
 FROM node:20-slim
 
 
-# ১. Linux Font Engine ইনস্টল
+# 1. Fontconfig ইনস্টল
 RUN apt-get update && apt-get install -y fontconfig && rm -rf /var/lib/apt/lists/*
 
-# ২. ডকারের সিস্টেমে জেনেরিক Calibri নামে ফোল্ডার তৈরি
+# 2. ফন্ট ফাইল কপি
 RUN mkdir -p /usr/share/fonts/truetype/calibri
-
-# ৩. প্রজেক্টের assets ফোল্ডারের ফাইলকে OS Level "Calibri" নাম দিয়ে কপি
 COPY assets/Calibribold.woff /usr/share/fonts/truetype/calibri/Calibri.woff
 
-# ৪. ফন্ট ক্যাশ রিফ্রেশ
+# 3. Linux-কে Calibri ফন্ট নাম বাধ্য করার জন্য Fontconfig Alias যোগ করা
+RUN mkdir -p /etc/fonts/conf.d/
+RUN echo '<?xml version="1.0"?>\n\
+<!DOCTYPE fontconfig SYSTEM "fonts.dtd">\n\
+<fontconfig>\n\
+  <match target="pattern">\n\
+    <test qual="any" name="family"><string>Calibri</string></test>\n\
+    <edit name="family" mode="assign" binding="same"><string>CustomCalibri</string></edit>\n\
+  </match>\n\
+  <selectfont>\n\
+    <acceptfont>\n\
+      <pattern>\n\
+        <patelt name="family"><string>CustomCalibri</string></patelt>\n\
+      </pattern>\n\
+    </acceptfont>\n\
+  </selectfont>\n\
+</fontconfig>' > /etc/fonts/conf.d/99-calibri-alias.conf
+
+# 4. ফন্ট ক্যাশ রিফ্রেশ
 RUN fc-cache -f -v
 
 
