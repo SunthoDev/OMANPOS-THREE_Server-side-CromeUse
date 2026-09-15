@@ -776,6 +776,7 @@ async function run() {
             "--disable-setuid-sandbox",
             "--disable-dev-shm-usage",
             "--disable-gpu",
+            "--font-render-hinting=medium", // ফন্ট রেন্ডারিং ঠিক রাখে
           ],
           ignoreDefaultArgs: ["--disable-extensions"],
         });
