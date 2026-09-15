@@ -569,6 +569,7 @@ async function run() {
                 src: url("data:font/truetype;base64,${CalibriboldFontBase64}") format("truetype");
                 font-weight: normal;
                 font-style: normal;
+                font-display: swap; /* ফন্ট লোড না হলে বা মোবাইলে না সাপোর্ট করলে স্ট্যান্ডার্ড ফলব্যাক ফন্ট দেখাবে */
               }
               @font-face {
                 font-family: 'BoldTimesNewRoman';
@@ -623,14 +624,23 @@ async function run() {
 
               .header-image { width: 100%;}
 
-              // .data-label-en, .data-value, .data-label-ar { line-height: 1.1; font-size: 10px; }
               .data-label-en, .data-value, .data-label-ar { line-height: 1.2; font-size: 10px; }
 
-              // .data-value { font-family: 'RobotoRegular', serif; white-space: pre-wrap; font-weight: 400; margin-left: -50px; }
-              .data-value { font-family: 'Calibribold', serif; white-space: pre-wrap; font-weight: 400; margin-left: -45px; }
+              // .data-value { font-family: 'Calibribold', serif; white-space: pre-wrap; font-weight: 400; margin-left: -45px; }
+              .data-value { 
+              font-family: 'Calibribold', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+              white-space: pre-wrap; 
+              font-weight: 400; 
+              margin-left: -45px; }
 
-              // .data-label-en { font-family: 'RobotoRegular', serif; font-weight: 400; }
-              .data-label-en { font-family: 'Calibribold', serif; font-weight: 400; }
+              // .data-label-en { font-family: 'Calibribold', serif; font-weight: 400; }
+              .data-label-en { 
+              font-family: 'Calibribold', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+              font-weight: 400; }
+
+
+
+
 
               .data-label-ar { font-size: 10px; font-weight: 600; text-align: left; direction: rtl; padding-left: 25px; margin-left: -35px; }
 
@@ -853,7 +863,7 @@ async function run() {
       }
     });
 
-    // I change nfont or other code !!
+    // I change some thing and add image arb !!
     // app.get("/download/attested-hq/:id", async (req, res) => {
     //   let browser = null;
     //   try {
@@ -869,6 +879,14 @@ async function run() {
     //     }
 
     //     // 1. Load Assets
+    //     const ARabBottomImageBase64 = await fs.readFile(
+    //       path.join(__dirname, "assets", "ARABICBottom.png"),
+    //       "base64"
+    //     );
+    //     const ARabLogoBase64 = await fs.readFile(
+    //       path.join(__dirname, "assets", "ARABIC.png"),
+    //       "base64"
+    //     );
     //     const leftLogoBase64 = await fs.readFile(
     //       path.join(__dirname, "assets", "EWWE.jpg"),
     //       "base64"
@@ -903,14 +921,24 @@ async function run() {
     //       path.join(__dirname, "assets", "RobotoCondensed-SemiBold.ttf"),
     //       "base64"
     //     );
+    //     const CalibriboldFontBase64 = await fs.readFile(
+    //       path.join(__dirname, "assets", "Calibribold.woff"),
+    //       "base64"
+    //     );
+    //     const TimesNewRomanBolds = await fs.readFile(
+    //       path.join(__dirname, "assets", "TimesNewRomanBold.woff"),
+    //       "base64"
+    //     );
     //     // ================= New Import =================
 
+    //     const ArbeImageBottomUrl = `data:image/jpeg;base64,${ARabBottomImageBase64}`;
+    //     const ArbeLogoataUrl = `data:image/jpeg;base64,${ARabLogoBase64}`;
     //     const leftLogoDataUrl = `data:image/jpeg;base64,${leftLogoBase64}`;
     //     const headingDataUrl = `data:image/png;base64,${headingBase64}`;
     //     const verifiedDataUrl = `data:image/png;base64,${verifiedBase64}`;
 
     //     const qrCodeDataURL = await QRCode.toDataURL(
-    //       `https://omanpost.doscwallet.com/User/&/page/preview/${documentData.VerificationNo}`
+    //       `https://omanpost.docswallat.com/User/#/page/preview/${documentData.VerificationNo}`
     //     );
 
     //     // 2. Prepare HTML
@@ -951,41 +979,113 @@ async function run() {
     //             font-weight: normal;
     //             font-style: normal;
     //           }
+    //           @font-face {
+    //             font-family: 'Calibribold';
+    //             src: url("data:font/truetype;base64,${CalibriboldFontBase64}") format("truetype");
+    //             font-weight: normal;
+    //             font-style: normal;
+    //           }
+    //           @font-face {
+    //             font-family: 'BoldTimesNewRoman';
+    //             src: url("data:font/truetype;base64,${TimesNewRomanBolds}") format("truetype");
+    //             font-weight: normal;
+    //             font-style: normal;
+    //           }
 
-
+              
     //           body { display: flex; justify-content: center; align-items: flex-start; margin: 0;  font-family: 'ArialEmbedded', sans-serif; -webkit-print-color-adjust: exact; }
-    //           .page-container { background-color: #fff; padding: 1rem 0rem; width: 760px; position: relative; box-sizing: border-box; margin-bottom: -40px; }
-    //           .right-content-wrapper { margin-left: 415px; }
-    //           .seal-container { rotate: 1deg; position: absolute; top: 65px; left: 373px; width: 6.5rem; height: auto; z-index: 10; }
-    //           .seal-image { width: 80%; height: auto; border-radius: 9999px; }
-    //           .certificate-box { border: 1px solid #9ca3af; width: 315px; position: relative; height: 175px; }
-    //           .certificate-main { width: 300px; display: grid; margin-left: 2.5rem; grid-template-columns: 1fr 1fr 1fr; padding: 12px 0rem 1rem 0.1rem; font-size: 0.5rem; row-gap: 2px; white-space: pre-line; }
 
-    //           .header-image-container { position: absolute; top: -0.8rem; left: 48%; transform: translateX(-50%); width: 244px; z-index: 10; }
+    //           .page-container { background-color: #fff; padding: 1rem 0rem; width: 760px; position: relative; box-sizing: border-box; margin-bottom: -40px; }
+
+    //           // .right-content-wrapper { margin-left: 415px; }
+    //           .right-content-wrapper { margin-left: 403px; }
+
+    //           // .seal-container { rotate: 1deg; position: absolute; top: 65px; left: 373px; width: 6.5rem; height: auto; z-index: 10; }
+    //           .seal-container { rotate: 1deg; position: absolute; top: 65px; left: 361px; width: 6.5rem; height: auto; z-index: 10; }
+    //           .seal-image { width: 80%; height: auto; border-radius: 9999px; }
+
+    //           // .certificate-box { border: 1px solid #9ca3af; width: 315px; position: relative; height: 175px; }
+    //           .certificate-box { border: 1px solid #9ca3af; width: 326px; position: relative; height: 175px; }
+
+    //           .certificate-main { 
+    //             width: 300px; 
+    //             display: grid; 
+    //             margin-left: 2.5rem; 
+    //             grid-template-columns: 1fr 1fr 1fr; 
+    //             padding: 12px 0rem 1rem 0.1rem; 
+    //             font-size: 0.5rem; 
+    //             row-gap: 2px; 
+    //             white-space: pre-line;
+    //           }
+    //           .arbImage {
+    //             grid-column: 3;
+    //             grid-row: 1 / span 7;
+    //             display: flex;
+    //             justify-content: flex-start;
+    //             align-items: flex-start;
+    //             background-color: green,
+    //             padding-left: 25px;
+    //             // margin-left: -16px;
+    //             margin-left: -2px;
+    //           }
+    //           .arbImage img {
+    //               width: 72px;
+    //               height: auto;
+    //           }
+
+    //           // .header-image-container { position: absolute; top: -0.8rem; left: 48%; transform: translateX(-50%); width: 244px; z-index: 10; }
+    //           .header-image-container { position: absolute; top: -0.8rem; left: 48%; transform: translateX(-50%); width: 250px; z-index: 10; }
+
     //           .header-image { width: 100%;}
 
-    //           .ddata-label-en, .data-value, .data-label-ar { line-height: 1.3; font-size: 9px; }
-    //           .data-label-en, .data-value, .data-label-ar { line-height: 1.1; font-size: 10px; }
+    //           // .data-label-en, .data-value, .data-label-ar { line-height: 1.1; font-size: 10px; }
+    //           .data-label-en, .data-value, .data-label-ar { line-height: 1.2; font-size: 10px; }
 
-    //           .ddata-value { font-family: 'RobotoRegular', serif; white-space: pre-wrap; font-weight: 400; margin-left: -48px; }
-    //           .data-value { font-family: 'RobotoRegular', serif; white-space: pre-wrap; font-weight: 400; margin-left: -50px; }
+    //           // .data-value { font-family: 'RobotoRegular', serif; white-space: pre-wrap; font-weight: 400; margin-left: -50px; }
+    //           .data-value { font-family: 'Calibribold', serif; white-space: pre-wrap; font-weight: 400; margin-left: -45px; }
 
-    //           .data-label-en { font-family: 'RobotoRegular', serif; font-weight: 400; }
+    //           // .data-label-en { font-family: 'RobotoRegular', serif; font-weight: 400; }
+    //           .data-label-en { font-family: 'Calibribold', serif; font-weight: 400; }
+
     //           .data-label-ar { font-size: 10px; font-weight: 600; text-align: left; direction: rtl; padding-left: 25px; margin-left: -35px; }
-    //           .divider-line { border-top: 1px solid #6b7280; margin-top: 6px; margin-bottom: 5px; width: 380px; margin-left: -110px; }
-    //           .certificate-footer { display: flex; justify-content: flex-end; align-items: center; width: 580px; padding-bottom: 2rem; position: relative; }
-    //           .footer-text { text-align: right; direction: rtl; font-size: 11px; margin-right: 20rem; font-weight: 600; }
+
+    //           // .divider-line { border-top: 1px solid #6b7280; margin-top: 6px; margin-bottom: 5px; width: 380px; margin-left: -110px; }
+    //           .divider-line { border-top: 1px solid #6b7280; margin-top: 6px; margin-bottom: 5px; width: 394px; margin-left: -106px; }
+              
+    //           // .certificate-footer { display: flex; justify-content: flex-end; align-items: center; width: 580px; padding-bottom: 2rem; position: relative; }
+    //           .certificate-footer { display: flex; justify-content: flex-end; align-items: center; width: 592px; padding-bottom: 2rem; position: relative; }
+
+    //           // .footer-text { text-align: right; direction: rtl; font-size: 11px; margin-right: 20rem; font-weight: 600; }
+    //         .footer-text { 
+    //             text-align: right; 
+    //             direction: rtl; 
+    //             font-size: 12px;
+    //             margin-right: 20rem;
+    //             font-weight: 600; 
+
+    //             /* 🛠️ Puppeteer Crash Prevention Props */
+    //             box-sizing: border-box;
+    //             margin-left: -20rem; /* মার্জিন রাইটের সমপরিমাণ নেগেটিভ মার্জিন লেফট দিয়ে লেআউটের মোট উইড্থ ব্যালেন্স করা হয়েছে */
+    //             width: max-content;   /* টেক্সট তার প্রয়োজন অনুযায়ী সাইজ নিবে, ভাঙবে না */
+    //         }
+
     //           .footer-line { margin: 0.2rem 0; }
 
-    //           .footer-mono { font-family: 'TimesEmbedded', serif; letter-spacing: 0.07em; font-size: 0.7rem; font-weight: 600; }
-    //           .qr-code-image { position: absolute; bottom: 15px; right: 240px; width: 4.5rem; height: 4.5rem; opacity: 0.8; }
+    //           // .footer-mono { font-family: 'TimesEmbedded', serif; letter-spacing: 0.07em; font-size: 0.7rem; font-weight: 600; }
+    //           .footer-mono { font-family: 'BoldTimesNewRoman', serif; letter-spacing: 0.03em; font-size: 11.6px; font-weight: 600; }
+              
+    //           // .qr-code-image { position: absolute; bottom: 15px; right: 240px; width: 4.5rem; height: 4.5rem; opacity: 0.8; }
+    //           .qr-code-image { position: absolute; bottom: 20px; right: 240px; width: 4.5rem; height: 4.5rem; opacity: 0.8; }
+
     //           .blockchain-verified { position: absolute; bottom: 40px; left: 20px; }
     //           .verified-image { height: 1.3rem; width: auto; }
 
     //           .com { font-family: 'RobotoCondensedMedium', serif; font-weight: bold; }
     //           .att { font-family: 'RobotoCondensedMedium', serif; font-weight: bold; }
 
-    //           .qr{ font-family: 'TimesEmbedded', serif; position: absolute; left: -48px; font-size:0.6rem; }
+    //           // .qr{ font-family: 'TimesEmbedded', serif; position: absolute; left: -45px; font-size:0.6rem; }
+    //           .qr{ font-family: 'BoldTimesNewRoman', serif; position: absolute; left: -68px; font-size:11.6px; }
+
     //           </style>
     //       </head>
     //       <body>
@@ -994,284 +1094,37 @@ async function run() {
     //                <div class="blockchain-verified"><img src="${verifiedDataUrl}" alt="Blockchain Icon" class="verified-image"></div>
     //                <div class="right-content-wrapper">
     //                    <div class="certificate-box">
+
     //                        <div class="header-image-container"><img src="${headingDataUrl}" alt="Header" class="header-image"></div>
-    //                        <main class="certificate-main">
-    //                            <div class="data-label-en">e-Verify No</div><div class="data-value">${documentData.TransactionNumber}</div><div class="data-label-ar">رقم التصديق</div>
-    //                            <div class="data-label-en">Verify By</div><div class="data-value">${documentData.VerifyBy}</div><div class="data-label-ar">تم التحقق من قبل</div>
-    //                            <div class="data-label-en">Verify at</div><div class="data-value">${documentData.VerifyAt}</div><div class="data-label-ar">تم التحقق في</div>
-    //                           <div class="data-label-en">Applicant <br>Name</div><div class="data-value">${documentData.ApplicantName}</div><div class="data-label-ar">اسم العميل</div>
-    //                           <div class="data-label-en">Document <br> Name</div><div class="data-value com">${documentData.DocumentType}</div><div class="data-label-ar">اسم الوثيقة</div>
-    //                           <div class="data-label-en">Date of <br><span class="att">Attestation</span></div><div class="data-value">${documentData.VerificationDateTime}</div><div class="data-label-ar">تاريخ التصديق</div>
-    //                           <div class="data-label-en">Approver <br>Name</div><div class="data-value">${documentData.ApproverName}</div><div class="data-label-ar">تمت المصادقة من قبل</div>
-    //                       </main>
-    //                   </div>
-    //                   <div class="divider-line"></div>
-    //                   <footer class="certificate-footer">
-    //                       <div class="footer-text">
-    // <p class="footer-line">بالرقم تصديق <span class="footer-mono">: ${documentData.TransactionNumber}</span></p>
-    //                           <span class="qr">(QR Code)</span>
-    //                           <p class="footer-line">تم إنجاز المعاملة إلكترونيا و للتأكد من صحة المعاملة يمكنك مسح الباركود</p>
-    //                       </div>
-    //                       <img src="${qrCodeDataURL}" alt="QR Code" class="qr-code-image">
-    //                   </footer>
-    //               </div>
-    //           </div>
-    //       </body>
-    //       </html>
-    //     `;
 
-    //     // 3. SMART BROWSER LAUNCH
-    //     let executablePath = undefined;
+    //                           <main class="certificate-main">
+    //                               <div class="data-label-en">e-Verify No</div>
+    //                               <div class="data-value">${documentData?.TransactionNumber}</div>
+                                  
+    //                               <div class="arbImage">
+    //                                   <img src="${ArbeLogoataUrl}" alt="Arabic Image">
+    //                               </div>
 
-    //     if (process.platform === "win32") {
-    //       const possiblePaths = [
-    //         "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
-    //         "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
-    //         process.env.LOCALAPPDATA +
-    //         "\\Google\\Chrome\\Application\\chrome.exe",
-    //       ];
-    //       for (const p of possiblePaths) {
-    //         if (fsClassic.existsSync(p)) {
-    //           executablePath = p;
-    //           break;
-    //         }
-    //       }
-    //     } else {
-    //       const linuxPaths = [
-    //         "/usr/bin/chromium",
-    //         "/usr/bin/chromium-browser",
-    //         "/usr/bin/google-chrome-stable",
-    //         "/usr/bin/google-chrome",
-    //       ];
-    //       for (const p of linuxPaths) {
-    //         if (fsClassic.existsSync(p)) {
-    //           executablePath = p;
-    //           break;
-    //         }
-    //       }
-    //     }
+    //                               <div class="data-label-en">Verify By</div>
+    //                               <div class="data-value">${documentData?.VerifyBy}</div>
 
-    //     browser = await puppeteer.launch({
-    //       headless: true,
-    //       executablePath,
-    //       args: [
-    //         "--no-sandbox",
-    //         "--disable-setuid-sandbox",
-    //         "--disable-dev-shm-usage",
-    //         "--disable-gpu",
-    //       ],
-    //       ignoreDefaultArgs: ["--disable-extensions"],
-    //     });
+    //                               <div class="data-label-en">Verify at</div>
+    //                               <div class="data-value">${documentData?.VerifyAt}</div>
 
-    //     const page = await browser.newPage();
-    //     await page.setContent(stampHtml, {
-    //       waitUntil: "load",
-    //       timeout: 0,
-    //     });
+    //                               <div class="data-label-en">Applicant <br> Name</div>
+    //                               <div class="data-value">${documentData?.ApplicantPDFName}</div>
 
-    //     // 4. GENERATE VECTOR PDF || And Maintain Size bellow.
-    //     await page.waitForTimeout(300);
-    //     const stampPdfBuffer = await page.pdf({
-    //       width: "515px",
-    //       height: "195px",
-    //       // height: "195px",
-    //       printBackground: true,
-    //       pageRanges: "1",
-    //     });
+    //                               <div class="data-label-en">Document <br> Name</div>
+    //                               <div class="data-value com-m">${documentData?.DocumentType}</div>
 
-    //     await browser.close();
-    //     browser = null;
+    //                               <div class="data-label-en">Date of <br> <span class="att-t">Attestation</span></div>
 
-    //     // 5. MERGE PDFS WITH SHRINKING LOGIC ADDED
-    //     const finalPdfDoc = await PDFDocument.create();
-    //     const originalPdfBytes = await fs.readFile(
-    //       path.join(__dirname, "files", documentData.attestedPDF)
-    //     );
-    //     const originalPdfDoc = await PDFDocument.load(originalPdfBytes);
+    //                               <div class="data-value">${documentData?.VerificationDateTime}</div>
 
-    //     const stampPdfDoc = await PDFDocument.load(stampPdfBuffer);
-    //     const [stampPage] = await finalPdfDoc.embedPdf(stampPdfDoc);
-    //     const stampDims = stampPage.scale(1);
-
-    //     for (const originalPage of originalPdfDoc.getPages()) {
-    //       const { width: origWidth, height: origHeight } = originalPage.getSize();
-
-    //       // --- SHRINKING LOGIC ---
-    //       const newPageWidth = 1050; // target page width
-    //       const scaledStampHeight = (newPageWidth / stampDims.width) * stampDims.height;
-    //       const stampAreaHeight = scaledStampHeight - 40;
-
-    //       const scaledContentWidth = 700; // shrink PDF content
-    //       const scaledContentHeight = (scaledContentWidth / origWidth) * origHeight;
-    //       const newPageHeight = scaledContentHeight + stampAreaHeight;
-    //       // --- END SHRINKING LOGIC ---
-
-    //       const newPage = finalPdfDoc.addPage([newPageWidth, newPageHeight]);
-    //       const embeddedOriginalPage = await finalPdfDoc.embedPage(originalPage);
-
-    //       newPage.drawPage(embeddedOriginalPage, {
-    //         x: (newPageWidth - scaledContentWidth) / 2,
-    //         y: stampAreaHeight,
-    //         width: scaledContentWidth,
-    //         height: scaledContentHeight,
-    //       });
-
-    //       newPage.drawPage(stampPage, {
-    //         x: 0,
-    //         // y: -35,
-    //         y: -42,
-    //         width: newPageWidth,
-    //         height: scaledStampHeight,
-    //       });
-    //     }
-
-    //     const finalPdfBytes = await finalPdfDoc.save();
-
-    //     // --- Send Response ---
-    //     const disposition =
-    //       req.query.action === "view" ? "inline" : "attachment";
-    //     res.setHeader(
-    //       "Content-Disposition",
-    //       `${disposition}; filename="${documentData.TransactionNumber}.pdf"`
-    //     );
-    //     res.setHeader("Content-Type", "application/pdf");
-    //     res.send(Buffer.from(finalPdfBytes));
-    //   } catch (error) {
-    //     console.error("Failed to generate final PDF:", error);
-    //     if (browser) await browser.close();
-    //     res.status(500).json({
-    //       success: false,
-    //       message: "An error occurred while generating the PDF.",
-    //       detailedError: error.message,
-    //     });
-    //   }
-    // });
-
-    // Previous Orgima Code off make developer !!
-    // app.get("/download/attested-hq/:id", async (req, res) => {
-    //   let browser = null;
-    //   try {
-    //     const { id } = req.params;
-    //     const documentData = await InformationOfUserCollection.findOne({
-    //       _id: new ObjectId(id),
-    //     });
-
-    //     if (!documentData || !documentData.attestedPDF) {
-    //       return res
-    //         .status(404)
-    //         .send("Document not found or attested PDF is missing.");
-    //     }
-
-    //     // 1. Load Assets
-    //     const leftLogoBase64 = await fs.readFile(
-    //       path.join(__dirname, "assets", "EWWE.jpg"),
-    //       "base64"
-    //     );
-    //     const headingBase64 = await fs.readFile(
-    //       path.join(__dirname, "assets", "Heading.png"),
-    //       "base64"
-    //     );
-    //     const verifiedBase64 = await fs.readFile(
-    //       path.join(__dirname, "assets", "Verified.png"),
-    //       "base64"
-    //     );
-    //     const arialFontBase64 = await fs.readFile(
-    //       path.join(__dirname, "assets", "ARIAL.TTF"),
-    //       "base64"
-    //     );
-    //     const timesFontBase64 = await fs.readFile(
-    //       path.join(__dirname, "assets", "times.ttf"),
-    //       "base64"
-    //     );
-
-    //     // ================= New Import =================
-    //     const RobotoMediumFontBase64 = await fs.readFile(
-    //       path.join(__dirname, "assets", "RobotoCondensed-Medium.ttf"),
-    //       "base64"
-    //     );
-    //     const RobotoRegularFontBase64 = await fs.readFile(
-    //       path.join(__dirname, "assets", "RobotoCondensed-Regular.ttf"),
-    //       "base64"
-    //     );
-    //     const RobotoSemiBoldFontBase64 = await fs.readFile(
-    //       path.join(__dirname, "assets", "RobotoCondensed-SemiBold.ttf"),
-    //       "base64"
-    //     );
-    //     // ================= New Import =================
-
-    //     const leftLogoDataUrl = `data:image/jpeg;base64,${leftLogoBase64}`;
-    //     const headingDataUrl = `data:image/png;base64,${headingBase64}`;
-    //     const verifiedDataUrl = `data:image/png;base64,${verifiedBase64}`;
-
-    //     const qrCodeDataURL = await QRCode.toDataURL(
-    //       `https://omanpost.doscwallet.com/User/&/page/preview/${documentData.VerificationNo}`
-    //     );
-
-    //     // 2. Prepare HTML
-    //     const stampHtml = `
-    //       <!DOCTYPE html>
-    //       <html lang="en">
-    //       <head>
-    //           <meta charset="UTF-8">
-    //           <style>
-    //           @font-face {
-    //             font-family: 'ArialEmbedded';
-    //             src: url("data:font/truetype;base64,${arialFontBase64}") format("truetype");
-    //           }
-    //           @font-face {
-    //             font-family: 'TimesEmbedded';
-    //             src: url("data:font/truetype;base64,${timesFontBase64}") format("truetype");
-    //             font-weight: normal;
-    //             font-style: normal;
-    //           }
-
-    //           body { display: flex; justify-content: center; align-items: flex-start; margin: 0;  font-family: 'ArialEmbedded', sans-serif; -webkit-print-color-adjust: exact; }
-    //           .page-container { background-color: #fff; padding: 1rem 0rem; width: 760px; position: relative; box-sizing: border-box; margin-bottom: -40px; }
-    //           .right-content-wrapper { margin-left: 415px; }
-    //           .seal-container { rotate: 1deg; position: absolute; top: 65px; left: 373px; width: 6.5rem; height: auto; z-index: 10; }
-    //           .seal-image { width: 80%; height: auto; border-radius: 9999px; }
-    //           .certificate-box { border: 1px solid #9ca3af; width: 315px; position: relative; height: 175px; }
-    //           .certificate-main { width: 300px; display: grid; margin-left: 2.5rem; grid-template-columns: 1fr 1fr 1fr; padding: 12px 0rem 1rem 0.1rem; font-size: 0.5rem; row-gap: 2px; white-space: pre-line; }
-    //           .header-image-container { position: absolute; top: -0.8rem; left: 48%; transform: translateX(-50%); width: 244px; z-index: 10; }
-    //           .header-image { width: 100%;}
-    //           .data-label-en, .data-value, .data-label-ar { line-height: 1.3; font-size: 9px; }
-    //           .data-value { white-space: pre-wrap; font-weight: 400; margin-left: -48px; }
-
-    //           .data-label-en { font-weight: 400; }
-    //           .data-label-ar { font-size: 10px; font-weight: 600; text-align: left; direction: rtl; padding-left: 25px; margin-left: -35px; }
-
-
-    //           .divider-line { border-top: 1px solid #6b7280; margin-top: 6px; margin-bottom: 5px; width: 380px; margin-left: -110px; }
-    //           .certificate-footer { display: flex; justify-content: flex-end; align-items: center; width: 580px; padding-bottom: 2rem; position: relative; }
-    //           .footer-text { text-align: right; direction: rtl; font-size: 11px; margin-right: 20rem; font-weight: 600; }
-    //           .footer-line { margin: 0.2rem 0; }
-
-    //           .footer-mono { font-family: 'TimesEmbedded', serif; letter-spacing: 0.07em; font-size: 0.7rem; font-weight: 600; }
-
-    //           .qr-code-image { position: absolute; bottom: 15px; right: 240px; width: 4.5rem; height: 4.5rem; opacity: 0.8; }
-    //           .blockchain-verified { position: absolute; bottom: 40px; left: 20px; }
-    //           .verified-image { height: 1.3rem; width: auto; }
-    //           .com { font-weight: bold; }
-    //           .att { font-weight: bold; }
-    //           .qr{ font-family: 'TimesEmbedded', serif; position: absolute; left: -48px; font-size:0.6rem; }
-    //           </style>
-    //       </head>
-    //       <body>
-    //            <div class="page-container">
-    //                <div class="seal-container"><img src="${leftLogoDataUrl}" alt="Oman Seal" class="seal-image"></div>
-    //                <div class="blockchain-verified"><img src="${verifiedDataUrl}" alt="Blockchain Icon" class="verified-image"></div>
-    //                <div class="right-content-wrapper">
-    //                    <div class="certificate-box">
-    //                        <div class="header-image-container"><img src="${headingDataUrl}" alt="Header" class="header-image"></div>
-    //                        <main class="certificate-main">
-    //                            <div class="data-label-en">e-Verify No.</div><div class="data-value">${documentData.TransactionNumber}</div><div class="data-label-ar">رقم التصديق</div>
-    //                            <div class="data-label-en">Verify By</div><div class="data-value">${documentData.VerifyBy}</div><div class="data-label-ar">تم التحقق من قبل</div>
-    //                            <div class="data-label-en">Verify at</div><div class="data-value">${documentData.VerifyAt}</div><div class="data-label-ar">تم التحقق في</div>
-    //                           <div class="data-label-en">Applicant <br>Name</div><div class="data-value">${documentData.ApplicantName}</div><div class="data-label-ar">اسم العميل</div>
-    //                           <div class="data-label-en">Document <br> Name</div><div class="data-value com">${documentData.DocumentType}</div><div class="data-label-ar">اسم الوثيقة</div>
-    //                           <div class="data-label-en">Date of <br><span class="att">Attestation</span></div><div class="data-value">${documentData.VerificationDateTime}</div><div class="data-label-ar">تاريخ التصديق</div>
-    //                           <div class="data-label-en">Approver <br>Name</div><div class="data-value">${documentData.ApproverName}</div><div class="data-label-ar">تمت المصادقة من قبل</div>
-    //                       </main>
+    //                               <div class="data-label-en">Approver <br> Name</div>
+    //                               <div class="data-value">${documentData?.ApproverName}</div>
+    //                           </main>
+                        
     //                   </div>
     //                   <div class="divider-line"></div>
     //                   <footer class="certificate-footer">
