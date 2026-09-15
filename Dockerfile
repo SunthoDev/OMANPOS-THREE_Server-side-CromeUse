@@ -1,26 +1,22 @@
 FROM node:20-slim
 
 
-# Debian/Ubuntu বেস ইমেজে contrib রিপোজিটরি এনাবল করা (ttf-mscorefonts-installer এর জন্য প্রয়োজন)
-RUN apt-get update && apt-get install -y \
-    fontconfig \
-    cabextract \
-    xfonts-utils \
-    wget \
-    && rm -rf /var/lib/apt/lists/*
+# ১. Linux Font Engine ইনস্টল
+RUN apt-get update && apt-get install -y fontconfig && rm -rf /var/lib/apt/lists/*
 
-# Microsoft Fonts EULA লাইসেন্স অটোমেটিক Accept করার নিয়ম
-RUN echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | debconf-set-selections
+# ২. ডকারের সিস্টেমে জেনেরিক Calibri নামে ফোল্ডার তৈরি
+RUN mkdir -p /usr/share/fonts/truetype/calibri
 
-# Fonts ইনস্টল এবং ক্যাশ আপডেট
-RUN apt-get update && apt-get install -y \
-    ttf-mscorefonts-installer \
-    && fc-cache -f -v \
-    && rm -rf /var/lib/apt/lists/*
+# ৩. প্রজেক্টের assets ফোল্ডারের ফাইলকে OS Level "Calibri" নাম দিয়ে কপি
+COPY assets/Calibribold.woff /usr/share/fonts/truetype/calibri/Calibri.woff
+
+# ৪. ফন্ট ক্যাশ রিফ্রেশ
+RUN fc-cache -f -v
 
 
 
-    
+  
+
 # Install Chromium and necessary dependencies
 # 'chromium-driver' is added for completeness, and 'libappindicator3-1' is restored.
 RUN apt-get update && apt-get install -y \
