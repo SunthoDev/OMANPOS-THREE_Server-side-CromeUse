@@ -23,7 +23,7 @@ RUN apt-get update && apt-get install -y \
 
 
 
-২. ডকার কন্টেইনারে ফন্ট ডিরেক্টরি তৈরি এবং ফন্ট কপি করা
+# ২. ডকার কন্টেইনারে ফন্ট ডিরেক্টরি তৈরি এবং ফন্ট কপি করা
 RUN mkdir -p /usr/local/share/fonts/calibri
 COPY assets/Calibri.ttf /usr/local/share/fonts/calibri/
 
