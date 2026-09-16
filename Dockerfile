@@ -1,30 +1,15 @@
 FROM node:20-slim
 
 
-# ১. Linux Font Engine ইনস্টল
-RUN apt-get update && apt-get install -y fontconfig && rm -rf /var/lib/apt/lists/*
-
 # ২. ডকার ওএস ডিরেক্টরিতে ফোল্ডার তৈরি
 RUN mkdir -p /usr/share/fonts/truetype/calibri
 
-# ৩. আপনার প্রজেক্টের assets ফোল্ডারের আসল নামের ফাইল কন্টেইনারে কপি
-COPY assets/Calibribold.woff /usr/share/fonts/truetype/calibri/Calibri.woff
+# ৩. আপনার প্রজেক্টের assets থেকে আসল Calibri.ttf এবং Calibribold.woff কপি (Case Exact Match)
+COPY assets/Calibri.ttf /usr/share/fonts/truetype/calibri/
+COPY assets/Calibribold.woff /usr/share/fonts/truetype/calibri/
 
-# ৪. পারমিশন সেট করা
+# ৪. পারমিশন সেট করা এবং ক্যাশ রিফ্রেশ
 RUN chmod 644 /usr/share/fonts/truetype/calibri/*
-
-# ৫. Linux Fontconfig XML Alias Rule (Calibri পাওয়ামাত্র আপনার WOFF ফাইলটি চিনবে)
-RUN mkdir -p /etc/fonts/conf.d/
-RUN echo '<?xml version="1.0"?>\n\
-<!DOCTYPE fontconfig SYSTEM "fonts.dtd">\n\
-<fontconfig>\n\
-  <match target="pattern">\n\
-    <test qual="any" name="family"><string>Calibri</string></test>\n\
-    <edit name="family" mode="assign" binding="same"><string>Calibribold</string></edit>\n\
-  </match>\n\
-</fontconfig>' > /etc/fonts/conf.d/99-calibri-alias.conf
-
-# ৬. ফন্ট ক্যাশ রিফ্রেশ
 RUN fc-cache -f -v
 
 
