@@ -1,32 +1,18 @@
 FROM node:20-slim
 
 
-# 1. Fontconfig ইনস্টল
+# ১. fontconfig ইনস্টল
 RUN apt-get update && apt-get install -y fontconfig && rm -rf /var/lib/apt/lists/*
 
-# 2. ফন্ট ফাইল কপি
+# ২. ডকার ওএস ডিরেক্টরিতে ফোল্ডার তৈরি
 RUN mkdir -p /usr/share/fonts/truetype/calibri
-COPY assets/Calibribold.woff /usr/share/fonts/truetype/calibri/Calibri.woff
 
-# 3. Linux-কে Calibri ফন্ট নাম বাধ্য করার জন্য Fontconfig Alias যোগ করা
-RUN mkdir -p /etc/fonts/conf.d/
-RUN echo '<?xml version="1.0"?>\n\
-<!DOCTYPE fontconfig SYSTEM "fonts.dtd">\n\
-<fontconfig>\n\
-  <match target="pattern">\n\
-    <test qual="any" name="family"><string>Calibri</string></test>\n\
-    <edit name="family" mode="assign" binding="same"><string>CustomCalibri</string></edit>\n\
-  </match>\n\
-  <selectfont>\n\
-    <acceptfont>\n\
-      <pattern>\n\
-        <patelt name="family"><string>CustomCalibri</string></patelt>\n\
-      </pattern>\n\
-    </acceptfont>\n\
-  </selectfont>\n\
-</fontconfig>' > /etc/fonts/conf.d/99-calibri-alias.conf
+# ৩. প্রজেক্টের assets থেকে আসল TTF ফাইল কপি এবং পারমিশন প্রদান
+COPY assets/calibri.ttf /usr/share/fonts/truetype/calibri/
+COPY assets/calibrib.ttf /usr/share/fonts/truetype/calibri/
+RUN chmod 644 /usr/share/fonts/truetype/calibri/*
 
-# 4. ফন্ট ক্যাশ রিফ্রেশ
+# ৪. ফন্ট ক্যাশ আপডেট (Linux এখন সরাসরি একে আসল Calibri ও Calibri Bold হিসেবে চিনবে)
 RUN fc-cache -f -v
 
 
