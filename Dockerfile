@@ -23,11 +23,11 @@ RUN apt-get update && apt-get install -y \
 
 
 
-# ২. ডকার কন্টেইনারে ফন্ট ডিরেক্টরি তৈরি এবং ফাইল কপি
+# কন্টেইনারে ফন্ট ফোল্ডার তৈরি ও ফাইল কপি
 RUN mkdir -p /usr/local/share/fonts/calibri
 COPY assets/Calibribold.woff /usr/local/share/fonts/calibri/
 
-# ৩. পারমিশন ও ফন্ট ক্যাশ আপডেট
+# লিনাক্স ফন্ট ক্যাশ রিলোড
 RUN chmod -R 755 /usr/local/share/fonts/calibri
 RUN fc-cache -f -v
 
