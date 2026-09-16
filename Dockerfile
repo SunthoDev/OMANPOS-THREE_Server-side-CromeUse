@@ -23,15 +23,13 @@ RUN apt-get update && apt-get install -y \
 
 
 
-# ২. ডকার সিস্টেমে Calibri ফোল্ডার তৈরি
-RUN mkdir -p /usr/share/fonts/truetype/calibri
+# ২. /usr/local/share/fonts/ এ ফোল্ডার তৈরি ও কপি (এটি Chromium সরাসরি এক্সেস করতে পারে)
+RUN mkdir -p /usr/local/share/fonts/calibri
+COPY assets/Calibri.ttf /usr/local/share/fonts/calibri/
+COPY assets/Calibribold.woff /usr/local/share/fonts/calibri/
 
-# ৩. আসল Calibri ফাইল কপি করা
-COPY assets/Calibri.ttf /usr/share/fonts/truetype/calibri/
-COPY assets/Calibribold.woff /usr/share/fonts/truetype/calibri/
-
-# ৪. পারমিশন সেট করা এবং ফন্ট ক্যাশ রিফ্রেশ (এখন আর fc-cache error দেবে না)
-RUN chmod 644 /usr/share/fonts/truetype/calibri/*
+# ৩. পারমিশন ও ক্যাশ আপডেট
+RUN chmod -R 755 /usr/local/share/fonts/calibri
 RUN fc-cache -f -v
 
 

@@ -758,7 +758,6 @@ async function run() {
             "/usr/bin/chromium-browser",
             "/usr/bin/google-chrome-stable",
             "/usr/bin/google-chrome",
-            "--font-render-hinting=medium", // ফন্ট ক্লিয়ার রেন্ডার করার জন্য
           ];
           for (const p of linuxPaths) {
             if (fsClassic.existsSync(p)) {
@@ -776,6 +775,10 @@ async function run() {
             "--disable-setuid-sandbox",
             "--disable-dev-shm-usage",
             "--disable-gpu",
+
+            '--disable-web-security',
+    '--font-render-hinting=full', // ফন্ট রেন্ডারিং নিশ্চিত করার জন্য
+    '--allow-running-insecure-content'
           ],
           ignoreDefaultArgs: ["--disable-extensions"],
         });
