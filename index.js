@@ -628,7 +628,7 @@ async function run() {
 
               // .data-value { font-family: 'Calibribold', serif; white-space: pre-wrap; font-weight: 400; margin-left: -45px; }
               .data-value { 
-              font-family: Calibri, calibri, Roboto, sans-serif !important; 
+              font-family: Calibri, 'Calibri Light', Roboto, sans-serif !important;; 
               white-space: pre-wrap; 
               font-weight: 400; 
               margin-left: -45px; }
@@ -636,7 +636,7 @@ async function run() {
               // .data-label-en { font-family: 'Calibribold', serif; font-weight: 400; }
               .data-label-en { 
               // font-family: Calibri, Roboto, sans-serif; 
-              font-family: Calibri, calibri, Roboto, sans-serif !important; 
+              font-family: Calibri, 'Calibri Light', Roboto, sans-serif !important;; 
               font-weight: 400; }
 
 
