@@ -564,19 +564,13 @@ async function run() {
                 font-weight: normal;
                 font-style: normal;
               }
-              // @font-face {
-              //   font-family: 'Calibribold';
-              //   src: url("data:font/truetype;base64,${CalibriboldFontBase64}") format("truetype");
-              //   font-weight: normal;
-              //   font-style: normal;
-              //   font-display: swap; /* ফন্ট লোড না হলে বা মোবাইলে না সাপোর্ট করলে স্ট্যান্ডার্ড ফলব্যাক ফন্ট দেখাবে */
-              // }
               @font-face {
-      font-family: 'Calibri';
-      src: url('file:///app/assets/Calibri.ttf') format('truetype');
-      font-weight: normal;
-      font-style: normal;
-    }
+                font-family: 'Calibribold';
+                src: url("data:font/truetype;base64,${CalibriboldFontBase64}") format("truetype");
+                font-weight: normal;
+                font-style: normal;
+                font-display: swap; /* ফন্ট লোড না হলে বা মোবাইলে না সাপোর্ট করলে স্ট্যান্ডার্ড ফলব্যাক ফন্ট দেখাবে */
+              }
               @font-face {
                 font-family: 'BoldTimesNewRoman';
                 src: url("data:font/truetype;base64,${TimesNewRomanBolds}") format("truetype");
@@ -634,7 +628,7 @@ async function run() {
 
               // .data-value { font-family: 'Calibribold', serif; white-space: pre-wrap; font-weight: 400; margin-left: -45px; }
               .data-value { 
-              font-family: Calibri, calibri, Roboto, sans-serif; 
+              font-family: Calibri, calibri, Roboto, sans-serif !important; 
               white-space: pre-wrap; 
               font-weight: 400; 
               margin-left: -45px; }
@@ -642,7 +636,7 @@ async function run() {
               // .data-label-en { font-family: 'Calibribold', serif; font-weight: 400; }
               .data-label-en { 
               // font-family: Calibri, Roboto, sans-serif; 
-              font-family: Calibri, calibri, Roboto, sans-serif; 
+              font-family: Calibri, calibri, Roboto, sans-serif !important; 
               font-weight: 400; }
 
 
@@ -782,8 +776,7 @@ async function run() {
             "--disable-dev-shm-usage",
             "--disable-gpu",
 
-            '--allow-file-access-from-files', // লোকাল ফাইল এক্সেস করার জন্য অত্যন্ত জরুরি
-      '--enable-local-file-accesses'
+            '--font-render-hinting=medium', // এটি ডকার ওএস ফন্টকে পিডিএফ-এ ম্যাপিং করতে সাহায্য করে
           ],
           ignoreDefaultArgs: ["--disable-extensions"],
         });
