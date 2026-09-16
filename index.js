@@ -564,13 +564,19 @@ async function run() {
                 font-weight: normal;
                 font-style: normal;
               }
+              // @font-face {
+              //   font-family: 'Calibribold';
+              //   src: url("data:font/truetype;base64,${CalibriboldFontBase64}") format("truetype");
+              //   font-weight: normal;
+              //   font-style: normal;
+              //   font-display: swap; /* ফন্ট লোড না হলে বা মোবাইলে না সাপোর্ট করলে স্ট্যান্ডার্ড ফলব্যাক ফন্ট দেখাবে */
+              // }
               @font-face {
-                font-family: 'Calibribold';
-                src: url("data:font/truetype;base64,${CalibriboldFontBase64}") format("truetype");
-                font-weight: normal;
-                font-style: normal;
-                font-display: swap; /* ফন্ট লোড না হলে বা মোবাইলে না সাপোর্ট করলে স্ট্যান্ডার্ড ফলব্যাক ফন্ট দেখাবে */
-              }
+      font-family: 'Calibri';
+      src: url('file:///app/assets/Calibri.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
               @font-face {
                 font-family: 'BoldTimesNewRoman';
                 src: url("data:font/truetype;base64,${TimesNewRomanBolds}") format("truetype");
@@ -776,9 +782,8 @@ async function run() {
             "--disable-dev-shm-usage",
             "--disable-gpu",
 
-            '--disable-web-security',
-    '--font-render-hinting=full', // ফন্ট রেন্ডারিং নিশ্চিত করার জন্য
-    '--allow-running-insecure-content'
+            '--allow-file-access-from-files', // লোকাল ফাইল এক্সেস করার জন্য অত্যন্ত জরুরি
+      '--enable-local-file-accesses'
           ],
           ignoreDefaultArgs: ["--disable-extensions"],
         });

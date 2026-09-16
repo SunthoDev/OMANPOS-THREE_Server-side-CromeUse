@@ -23,12 +23,11 @@ RUN apt-get update && apt-get install -y \
 
 
 
-# ২. /usr/local/share/fonts/ এ ফোল্ডার তৈরি ও কপি (এটি Chromium সরাসরি এক্সেস করতে পারে)
+২. ডকার কন্টেইনারে ফন্ট ডিরেক্টরি তৈরি এবং ফন্ট কপি করা
 RUN mkdir -p /usr/local/share/fonts/calibri
 COPY assets/Calibri.ttf /usr/local/share/fonts/calibri/
-COPY assets/Calibribold.woff /usr/local/share/fonts/calibri/
 
-# ৩. পারমিশন ও ক্যাশ আপডেট
+# ৩. ফন্টের পারমিশন ঠিক করা এবং ফন্ট ক্যাশ আপডেট করা
 RUN chmod -R 755 /usr/local/share/fonts/calibri
 RUN fc-cache -f -v
 
