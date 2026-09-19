@@ -21,24 +21,13 @@ RUN apt-get update && apt-get install -y \
     --no-install-recommends && \
     rm -rf /var/lib/apt/lists/*
 
-
-
-# কন্টেইনারে ফন্ট ফোল্ডার তৈরি ও ফাইল কপি
-RUN mkdir -p /usr/local/share/fonts/calibri
-COPY assets/Calibribold.woff /usr/local/share/fonts/calibri/
-
-# লিনাক্স ফন্ট ক্যাশ রিলোড
-RUN chmod -R 755 /usr/local/share/fonts/calibri
-RUN fc-cache -f -v
-
-
-
 # Puppeteer Chromium Path (This line is correct)
 ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium
 
 WORKDIR /app
 
 COPY package*.json ./
+
 # Use 'npm ci' for reliable builds in CI/CD, but 'npm install' is fine too.
 RUN npm install
 
