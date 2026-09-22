@@ -4,7 +4,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const path = require("path");
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 const multer = require("multer");
 
 // --- Libraries for the new Puppeteer PDF route ---
@@ -581,7 +581,7 @@ async function run() {
               
               body { display: flex; justify-content: center; align-items: flex-start; margin: 0;  font-family: 'ArialEmbedded', sans-serif; -webkit-print-color-adjust: exact; }
 
-              .page-container { background-color: #fff; padding: 1rem 0rem; width: 760px; position: relative; box-sizing: border-box; margin-bottom: -40px; }
+              .page-container { background-color: #fff; padding: 1rem 0rem; width: 760px; position: relative; box-sizing: border-box; margin-bottom: -10px; }
 
               // .right-content-wrapper { margin-left: 415px; }
               .right-content-wrapper { margin-left: 403px; }
@@ -591,14 +591,15 @@ async function run() {
               .seal-image { width: 80%; height: auto; border-radius: 9999px; }
 
               // .certificate-box { border: 1px solid #9ca3af; width: 315px; position: relative; height: 175px; }
-              .certificate-box { border: 1px solid #9ca3af; width: 326px; position: relative; height: 175px; }
+              .certificate-box { border: 1px solid #9ca3af; width: 326px; position: relative; height: 178px; }
 
               .certificate-main { 
                 width: 300px; 
                 display: grid; 
                 margin-left: 2.5rem; 
-                grid-template-columns: 1fr 1fr 1fr; 
-                padding: 12px 0rem 1rem 0.1rem; 
+                grid-template-columns: 1fr 1fr 1fr;
+                padding: 12px 0rem 1rem 0.1rem;
+                // padding: 12px 0rem 40px 0.1rem;
                 font-size: 0.5rem; 
                 row-gap: 2px; 
                 white-space: pre-line;
@@ -981,7 +982,7 @@ async function run() {
     //             font-style: normal;
     //           }
 
-              
+
     //           body { display: flex; justify-content: center; align-items: flex-start; margin: 0;  font-family: 'ArialEmbedded', sans-serif; -webkit-print-color-adjust: exact; }
 
     //           .page-container { background-color: #fff; padding: 1rem 0rem; width: 760px; position: relative; box-sizing: border-box; margin-bottom: -40px; }
@@ -1040,7 +1041,7 @@ async function run() {
 
     //           // .divider-line { border-top: 1px solid #6b7280; margin-top: 6px; margin-bottom: 5px; width: 380px; margin-left: -110px; }
     //           .divider-line { border-top: 1px solid #6b7280; margin-top: 6px; margin-bottom: 5px; width: 394px; margin-left: -106px; }
-              
+
     //           // .certificate-footer { display: flex; justify-content: flex-end; align-items: center; width: 580px; padding-bottom: 2rem; position: relative; }
     //           .certificate-footer { display: flex; justify-content: flex-end; align-items: center; width: 592px; padding-bottom: 2rem; position: relative; }
 
@@ -1062,7 +1063,7 @@ async function run() {
 
     //           // .footer-mono { font-family: 'TimesEmbedded', serif; letter-spacing: 0.07em; font-size: 0.7rem; font-weight: 600; }
     //           .footer-mono { font-family: 'BoldTimesNewRoman', serif; letter-spacing: 0.03em; font-size: 11.6px; font-weight: 600; }
-              
+
     //           // .qr-code-image { position: absolute; bottom: 15px; right: 240px; width: 4.5rem; height: 4.5rem; opacity: 0.8; }
     //           .qr-code-image { position: absolute; bottom: 20px; right: 240px; width: 4.5rem; height: 4.5rem; opacity: 0.8; }
 
@@ -1089,7 +1090,7 @@ async function run() {
     //                           <main class="certificate-main">
     //                               <div class="data-label-en">e-Verify No</div>
     //                               <div class="data-value">${documentData?.TransactionNumber}</div>
-                                  
+
     //                               <div class="arbImage">
     //                                   <img src="${ArbeLogoataUrl}" alt="Arabic Image">
     //                               </div>
@@ -1113,7 +1114,7 @@ async function run() {
     //                               <div class="data-label-en">Approver <br> Name</div>
     //                               <div class="data-value">${documentData?.ApproverName}</div>
     //                           </main>
-                        
+
     //                   </div>
     //                   <div class="divider-line"></div>
     //                   <footer class="certificate-footer">
