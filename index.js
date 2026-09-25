@@ -621,7 +621,7 @@ async function run() {
               }
 
               // .header-image-container { position: absolute; top: -0.8rem; left: 48%; transform: translateX(-50%); width: 244px; z-index: 10; }
-              .header-image-container { position: absolute; top: -0.8rem; left: 48%; transform: translateX(-50%); width: 250px; z-index: 10; }
+              .header-image-container { position: absolute; top: -0.8rem; left: 48%; transform: translateX(-50%); width: 254px; z-index: 10; }
 
               .header-image { width: 100%;}
 
