@@ -628,9 +628,9 @@ async function run() {
               // .data-label-en, .data-value, .data-label-ar { line-height: 1.2; font-size: 10px; }
               .data-label-en, .data-value, .data-label-ar { line-height: 1.2; font-size: 9.4px; }
 
-              .data-value { font-family: 'Calibribold', serif; white-space: pre-wrap; font-weight: 400; margin-left: -45px; }
+              .data-value { font-family: 'Calibribold', serif; white-space: pre-wrap; font-weight: 400; margin-left: -48px; }
 
-              .data-label-en { font-family: 'Calibribold', serif; font-weight: 400; padding-left: 4px; }
+              .data-label-en { font-family: 'Calibribold', serif; font-weight: 400; }
 
               
               .data-label-ar { font-size: 10px; font-weight: 600; text-align: left; direction: rtl; padding-left: 25px; margin-left: -35px; }
