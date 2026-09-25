@@ -625,7 +625,8 @@ async function run() {
 
               .header-image { width: 100%;}
 
-              .data-label-en, .data-value, .data-label-ar { line-height: 1.2; font-size: 10px; }
+              // .data-label-en, .data-value, .data-label-ar { line-height: 1.2; font-size: 10px; }
+              .data-label-en, .data-value, .data-label-ar { line-height: 1.2; font-size: 9.4px; }
 
               .data-value { font-family: 'Calibribold', serif; white-space: pre-wrap; font-weight: 400; margin-left: -45px; }
 
