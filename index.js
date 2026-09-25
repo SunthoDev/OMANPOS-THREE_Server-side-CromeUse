@@ -596,7 +596,7 @@ async function run() {
               .certificate-main { 
                 width: 300px; 
                 display: grid; 
-                margin-left: 2.5rem; 
+                margin-left: 2.4rem; 
                 grid-template-columns: 1fr 1fr 1fr;
                 padding: 12px 0rem 1rem 0.1rem;
                 // padding: 12px 0rem 40px 0.1rem;
