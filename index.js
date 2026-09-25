@@ -613,7 +613,8 @@ async function run() {
                 background-color: green,
                 padding-left: 25px;
                 // margin-left: -16px;
-                margin-left: 4px;
+                margin-left: 1px;
+                margin-top: 1px;
               }
               .arbImage img {
                   width: 72px;
@@ -636,7 +637,7 @@ async function run() {
               .data-label-ar { font-size: 10px; font-weight: 600; text-align: left; direction: rtl; padding-left: 25px; margin-left: -35px; }
 
               // .divider-line { border-top: 1px solid #6b7280; margin-top: 6px; margin-bottom: 5px; width: 380px; margin-left: -110px; }
-              .divider-line { border-top: 1px solid #6b7280; margin-top: 6px; margin-bottom: 5px; width: 398px; margin-left: -110px; }
+              .divider-line { border-top: 1px solid #6b7280; margin-top: 6px; margin-bottom: 5px; width: 400px; margin-left: -112px; }
               
               // .certificate-footer { display: flex; justify-content: flex-end; align-items: center; width: 580px; padding-bottom: 2rem; position: relative; }
               .certificate-footer { display: flex; justify-content: flex-end; align-items: center; width: 592px; padding-bottom: 2rem; position: relative; }
